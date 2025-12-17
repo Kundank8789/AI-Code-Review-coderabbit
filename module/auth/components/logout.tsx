@@ -1,9 +1,29 @@
+'use client'
 import React from 'react'
+import { signOut } from "@/lib/auth-client"
+import { useRouter } from 'next/navigation'
 
-function logout() {
+const Logout = ({
+  children,
+  className
+}: {
+  children: React.ReactNode
+  className?: string
+}) => {
+  const router = useRouter()
   return (
-    <div>logout</div>
+    <span className={className}
+      onClick={() => signOut({
+        fetchOptions: {
+          onSuccess: () => {
+            router.push('/login')
+          }
+        }
+      })}
+    >
+      {children}
+    </span>
   )
 }
 
-export default logout
+export default Logout
