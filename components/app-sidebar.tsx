@@ -85,15 +85,15 @@ export const AppSidebar = () => {
                 </div>
                 <SidebarMenu className='gap-2'>
                     {
-                        navigationItems.map((item)=>(
+                        navigationItems.map((item) => (
                             <SidebarMenuItem key={item.title}>
                                 <SidebarMenuButton
-                                asChild
-                                tooltip={item.title}
-                                className={`h-11 px-4 rounded-lg transition-all duration-200 ${isActive(item.url)
-                                    ?"bg-sidebar-accent text-sidebar-foreground font-semibold"
-                                    :"hover:bg-sidebar-accent/60 text-sidebar-foreground"
-                                }`}
+                                    asChild
+                                    tooltip={item.title}
+                                    className={`h-11 px-4 rounded-lg transition-all duration-200 ${isActive(item.url)
+                                        ? "bg-sidebar-accent text-sidebar-foreground font-semibold"
+                                        : "hover:bg-sidebar-accent/60 text-sidebar-foreground"
+                                        }`}
                                 >
                                     <Link href={item.url} className='flex items-center gap-3'>
                                         <item.icon className='w-6 h-6 shrink-0' />
@@ -101,7 +101,7 @@ export const AppSidebar = () => {
                                     </Link>
 
                                 </SidebarMenuButton>
-                                </SidebarMenuItem>
+                            </SidebarMenuItem>
                         ))
 
                     }
@@ -114,11 +114,11 @@ export const AppSidebar = () => {
                         <DropdownMenu>
                             <DropdownMenuTrigger asChild>
                                 <SidebarMenuButton
-                                size="lg"
-                                className='h-12 px-4 rounded-lg data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground hover:bg-sidebar-accent/50 transition-colors'
+                                    size="lg"
+                                    className='h-12 px-4 rounded-lg data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground hover:bg-sidebar-accent/50 transition-colors'
                                 >
                                     <Avatar>
-                                        <AvatarImage src={userAvatar || "placeholder.svg"} alt={userName}/>
+                                        <AvatarImage src={userAvatar || "placeholder.svg"} alt={userName} />
                                         <AvatarFallback className='rounded-lg'>
                                             {userInitials}
                                         </AvatarFallback>
@@ -130,6 +130,25 @@ export const AppSidebar = () => {
 
                                 </SidebarMenuButton>
                             </DropdownMenuTrigger>
+
+                            <DropdownMenuContent
+                                className='w-80 rounded-lg'
+                                align='end'
+                                side="right"
+                                sideOffset={8}
+
+                            >
+                                <div className='px-2 py-3 border-t border-b'>
+                                    <DropdownMenuItem asChild>
+                                        <button
+                                            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                                            className='w-full px-3 py-3 flex items-center gap-3 cursor-pointer rounded-md hover:bg-sidebar-accent/50 transition-colors text-sm font-medium'
+                                        >
+
+                                        </button>
+                                    </DropdownMenuItem>
+                                </div>
+                            </DropdownMenuContent>
                         </DropdownMenu>
                     </SidebarMenuItem>
                 </SidebarMenu>
