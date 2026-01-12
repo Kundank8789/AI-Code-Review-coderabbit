@@ -29,8 +29,8 @@ export const AppSidebar = () => {
             icon: BookOpen,
         },
         {
-            title: "Reprository",
-            url: "/repository",
+            title: "Repository",
+            url: "/dashboard/repository",
             icon: Github,
         },
         {
