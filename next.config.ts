@@ -1,7 +1,12 @@
-import type { NextConfig } from "next";
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  trustHost: true,
 
-const nextConfig: NextConfig = {
-  /* config options here */
+  experimental: {
+    allowedDevOrigins: [
+      "https://min-recent-spiritedly.ngrok-free.dev",
+    ],
+  },
 };
 
-export default nextConfig;
+module.exports = nextConfig;
